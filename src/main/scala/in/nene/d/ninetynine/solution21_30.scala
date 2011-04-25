@@ -19,3 +19,23 @@ object Solution22 {
     if (current <= end) range(current + 1, end, current :: l)
     else l reverse
 }
+
+import scala.util.Random
+
+object Solution23 {
+  val rand = new Random(System.currentTimeMillis())
+  def getRandomElements[T](n: Int, l: List[T]): List[T] =
+    getRandomElements(n, l, Nil)
+  private def getRandomElements[T](n: Int, l: List[T], a: List[T]): List[T] = {
+    if (n == 0) a reverse
+    else {
+      val removed = Solution20.removeKth(rand.nextInt(l length), l) 
+      removed match {
+	case Right((r,v)) => getRandomElements(n - 1, r, v :: a)
+	// Ideally this is not expected to happen
+	// However I'm not raising an exception - your preference may vary
+	case Left(r) => getRandomElements(n - 1, r, a)
+      }
+    }
+  }
+}

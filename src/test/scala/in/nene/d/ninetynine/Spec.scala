@@ -2,6 +2,8 @@ import org.specs2.mutable._
 import in.nene.d.ninetynine._
 
 class Check99Spec extends Specification {
+  def beBetween(i: Int, j: Int) = be_>=(i) and be_<=(j)
+
   "01. Find last item in a list" should {
     "Last item should be 8" in {
       Solution01.last(List(1,1,2,3,5,8)) must_== 8
@@ -267,6 +269,22 @@ class Check99Spec extends Specification {
 
     "Usual range" in {
       Solution22.range(4, 9) must_== List(4, 5, 6, 7, 8, 9)
+    }
+  }
+
+  "23. Get random elements from a list" in {
+    "Get no random elements" in {
+      Solution23.getRandomElements(0, List(1,2,3)) must_== Nil
+    }
+    "Get one random element" in {
+      Solution23.getRandomElements(1, List(1,2,3)) must beOneOf(List(1),List(2),List(3))
+    }
+    "Get few random elements" in {
+      val l = List(1,2,3,4,5,6)
+      val r = Solution23.getRandomElements(3,l)
+      r must have size(3)
+      (r toSet) must have size(3)
+      r must (be_>=(1) and be_<=(6)).forall
     }
   }
 }
