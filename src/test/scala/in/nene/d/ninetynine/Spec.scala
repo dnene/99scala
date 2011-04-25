@@ -237,4 +237,36 @@ class Check99Spec extends Specification {
 	Left(List('a, 'b, 'c, 'd))
     }
   }
+
+  "21. Insert element at given position" in {
+    "Add at beginning" in {
+      Solution21.insertAt(0, 5, List(1,2,3,4)) must_== List(5,1,2,3,4)
+    }
+
+    "Add in the middle" in {
+      Solution21.insertAt(2, 5, List(1,2,3,4)) must_== List(1,2,5,3,4)
+    }
+
+    "Add at the end" in {
+      Solution21.insertAt(4, 5, List(1,2,3,4)) must_== List(1,2,3,4,5)
+    }
+
+    "Add beyond the end" in {
+      Solution21.insertAt(5, 5, List(1,2,3,4)) must_== List(1,2,3,4)
+    }
+  }
+
+  "22. Create a list containing integers in a range" in {
+    "End lesser than start" in {
+      Solution22.range(2,1) must_== Nil
+    }
+
+    "Start same as end" in {
+      Solution22.range(1,1) must_== List(1)
+    }
+
+    "Usual range" in {
+      Solution22.range(4, 9) must_== List(4, 5, 6, 7, 8, 9)
+    }
+  }
 }
