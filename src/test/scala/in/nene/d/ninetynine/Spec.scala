@@ -292,4 +292,33 @@ class Check99Spec extends Specification {
       r must (be_>=(1) and be_<=(6)).forall
     }
   }
+  "24. Get random elements from a range" in {
+    "Get no random elements" in {
+      Solution24.getRandomElements(0,1,3) must_== Nil
+    }
+    "Get one random element" in {
+      Solution24.getRandomElements(1, 1, 3) must beOneOf(List(1),List(2),List(3))
+    }
+    "Get few random elements" in {
+      val r = Solution24.getRandomElements(3,1,6)
+      r must have size(3)
+      (r toSet) must have size(3)
+      r must (be_>=(1) and be_<=(6)).forall
+    }
+    "Request more random elements than elements in list" in {
+      val r = Solution24.getRandomElements(9,1,6)
+      r must have size(6)
+      (r toSet) must have size(6)
+      r must (be_>=(1) and be_<=(6)).forall
+    }
+  }
+
+  "25. Get random permutations from a list" in {
+    "Get random permutations" in {
+      val r = Solution25.getRandomPermutation(List(1,2,3,4,5,6))
+      r must have size(6)
+      (r toSet) must have size(6)
+      r must (be_>=(1) and be_<=(6)).forall
+    }
+  }
 }

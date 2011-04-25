@@ -40,4 +40,13 @@ object Solution23 {
   }
 }
 
+object Solution24 {
+  def getRandomElements(n: Int, from: Int, to: Int) =
+    Solution23.getRandomElements(n,List.range(from,to+1))
+}
+
+object Solution25 {
+  def getRandomPermutation[T](l: List[T]) =
+    Solution23.getRandomElements(l length,l)
+}
 
