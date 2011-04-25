@@ -321,4 +321,21 @@ class Check99Spec extends Specification {
       r must (be_>=(1) and be_<=(6)).forall
     }
   }
+
+  "26. Get all combinations" in {
+    "Get combinations" in {
+      val c = Solution26.combinations(3,List(1,2,3,4,5,6,7,8,9,10,11,12))
+      c must have size(220)
+    }
+  }
+
+  "27. Group elements into disjoint subsets" in {
+    "Group 3 elements" in {
+      var r = Solution27.group(List(1,2),List(1,2,3))
+      // expected = [[[1],[2,3]],[[2],[1,3]],[[3],[1,2]]]
+      r must have size(3)
+      (r toSet) must have size(3)
+      // more checks to be added
+    }
+  }
 }

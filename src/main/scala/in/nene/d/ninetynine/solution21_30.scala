@@ -50,3 +50,33 @@ object Solution25 {
     Solution23.getRandomElements(l length,l)
 }
 
+object Solution26 {
+  // TODO : Need to find how good / bad this is
+  def combinations[T](n: Int, l: List[T]): List[List[T]] =
+    combinations(n,l,Nil)
+  private def combinations[T](n: Int, l: List[T], c: List[T]): List[List[T]] =
+    if(n == 0) {
+      List(c)
+    }
+    else {
+      l match {
+	case Nil => Nil
+	case h :: t => {
+	  combinations(n - 1, t, h :: c) ::: combinations(n, t, c)
+	}
+      }
+    }
+}
+
+object Solution27 {
+  def group[T](counts: List[Int], l : List[T]): List[List[List[T]]] = 
+    counts match {
+      case Nil => List(Nil)
+      case h :: t => Solution26.combinations(h, l) flatMap { 
+	combo => group(t, l filterNot(combo contains)) map { combo :: _ }
+      }
+    }
+}
+
+
+    
