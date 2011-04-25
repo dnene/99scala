@@ -280,10 +280,15 @@ class Check99Spec extends Specification {
       Solution23.getRandomElements(1, List(1,2,3)) must beOneOf(List(1),List(2),List(3))
     }
     "Get few random elements" in {
-      val l = List(1,2,3,4,5,6)
-      val r = Solution23.getRandomElements(3,l)
+      val r = Solution23.getRandomElements(3,List(1,2,3,4,5,6))
       r must have size(3)
       (r toSet) must have size(3)
+      r must (be_>=(1) and be_<=(6)).forall
+    }
+    "Request more random elements than elements in list" in {
+      val r = Solution23.getRandomElements(9,List(1,2,3,4,5,6))
+      r must have size(6)
+      (r toSet) must have size(6)
       r must (be_>=(1) and be_<=(6)).forall
     }
   }

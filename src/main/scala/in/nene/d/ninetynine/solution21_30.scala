@@ -27,7 +27,7 @@ object Solution23 {
   def getRandomElements[T](n: Int, l: List[T]): List[T] =
     getRandomElements(n, l, Nil)
   private def getRandomElements[T](n: Int, l: List[T], a: List[T]): List[T] = {
-    if (n == 0) a reverse
+    if (n == 0 || ((l length) == 0)) a 
     else {
       val removed = Solution20.removeKth(rand.nextInt(l length), l) 
       removed match {
@@ -39,3 +39,5 @@ object Solution23 {
     }
   }
 }
+
+
