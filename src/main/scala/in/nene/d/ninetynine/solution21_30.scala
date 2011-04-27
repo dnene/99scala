@@ -78,5 +78,16 @@ object Solution27 {
     }
 }
 
+object Solution28a {
+  def sortByLength[T](l: List[List[T]]): List[List[T]] = 
+    l sortWith (_.length < _.length)
+}
+
+object Solution28b {
+  def freqSort[T](l: List[List[T]]): List[List[T]] = {
+    val hist = (Map[Int,Int]() /: (l map (_.length))) ((m,size) => m + (size -> (m.getOrElse(size,0)+1)))
+    l sortWith((l,r) => hist.getOrElse(l.length,0) < hist.getOrElse(r.length,0))
+  }
+}
 
     

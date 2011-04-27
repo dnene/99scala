@@ -338,4 +338,22 @@ class Check99Spec extends Specification {
       // more checks to be added
     }
   }
+
+  "28a. Sort List of Lists by Length" in {
+    "simple sort" in {
+      Solution28a.sortByLength(List(List(1,2,3),List(4),List(5,6))) must_==(
+	List(List(4),List(5,6),List(1,2,3)))
+    }
+  }
+
+  "28b. Sort List of lists by frequency of occurrence" in {
+    "do sort" in {
+      Solution28b.freqSort(
+	List(
+	  List('a, 'b, 'c), List('d, 'e), List('f, 'g, 'h), List('d, 'e), 
+	  List('i, 'j, 'k, 'l), List('m, 'n), List('o))) must_== 
+	    List(List('i, 'j, 'k, 'l), List('o), List('a, 'b, 'c), 
+		 List('f, 'g, 'h), List('d, 'e), List('d, 'e), List('m, 'n))
+    }
+  }
 }
