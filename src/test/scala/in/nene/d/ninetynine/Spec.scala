@@ -356,4 +356,52 @@ class Check99Spec extends Specification {
 		 List('f, 'g, 'h), List('d, 'e), List('d, 'e), List('m, 'n))
     }
   }
+
+  "31. Test if number is prime" in {
+    "2 is prime" in {
+      Solution31.isPrime(2) must_== true
+    }
+    "7 is prime" in {
+      Solution31.isPrime(7) must_== true
+    }
+    "9 is not prime" in {
+      Solution31.isPrime(9) must_== false
+    }
+    "12 is not prime" in {
+      Solution31.isPrime(12) must_== false
+    }
+  }
+
+  "32. Find gcd of two numbers" in {
+    "GCD of 36 and 63" in {
+      Solution32.gcd(36,63) must_== 9
+    }
+  }
+
+  "33. Are numbers coprime" in {
+    "35 and 63 are not coprime" in {
+      Solution33.areCoprime(35,63) must_== false
+    }
+    "35 and 64 are coprime" in {
+      Solution33.areCoprime(35,64) must_== true
+    }
+  }
+
+  "34. Compute totient" in {
+    "Totient of 10 is 4" in {
+      Solution34.totient(10) must_== 4
+    }
+  }
+
+  "35. Compute prime factors" in {
+    "Prime factors of 315" in {
+      Solution35.primeFactors(315) must_== List(3, 3, 5, 7)
+    }
+  }
+
+  "36. Prime factors multiplicity" in {
+    "Prime factor multiplicity of 315" in {
+      Solution36.primeFactorsMultiplicity(315) must_== Map(3 -> 2, 5 -> 1, 7 -> 1)
+    }
+  }
 }
